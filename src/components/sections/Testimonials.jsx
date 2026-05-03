@@ -37,8 +37,12 @@ export default function Testimonials() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {testimonials.map((item, idx) => (
-                        <div
+                        <motion.div
                             key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.2 }}
                             className="p-8 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800"
                         >
                             <p className="text-gray-700 dark:text-gray-300 mb-6 italic">
@@ -52,11 +56,11 @@ export default function Testimonials() {
                                     <p className="text-sm text-gray-500 dark:text-gray-400">{item.role}</p>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
             </div>
-        </section>
+        </section >
     );
 }
