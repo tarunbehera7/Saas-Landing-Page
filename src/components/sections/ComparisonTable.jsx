@@ -28,7 +28,7 @@ export default function ComparisonTable() {
                         </thead>
                         <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
                             {features.map((feature, idx) => (
-                                <tr key={idx} >
+                                <tr key={idx} className="hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors">
                                     <td className="py-4 px-6 text-gray-700 dark:text-gray-300">{feature.name}</td>
                                     <td className="py-4 px-6 text-center">
                                         {feature.basic ? <Check className="w-5 h-5 mx-auto text-green-500" /> : <X className="w-5 h-5 mx-auto text-gray-300 dark:text-gray-600" />}
