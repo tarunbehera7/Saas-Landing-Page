@@ -1,33 +1,25 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import Accordion from '../ui/Accordion';
 
-export default function Accordion({ title, content }) {
-    const [isOpen, setIsOpen] = useState(false);
+const faqs = [
+    {
+        question: "How does the free trial work?",
+        answer: "Our 14-day free trial gives you full access to all features."
+    },
+    {
+        question: "Can I switch plans later?",
+        answer: "You can upgrade or downgrade your plan at any time."
+    }
+];
 
+export default function FAQ() {
     return (
-        <div className="border border-gray-200 rounded-lg bg-white overflow-hidden">
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="flex justify-between items-center w-full p-5 text-left"
-            >
-                <span className="font-medium">{title}</span>
-                <ChevronDown className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-            </button>
-
-            <AnimatePresence initial={false}>
-                {isOpen && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                    >
-                        <div className="p-5 pt-0">
-                            {content}
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div>
+                {faqs.map((faq, idx) => (
+                    <Accordion key={idx} title={faq.question} content={faq.answer} />
+                ))}
+            </div>
+        </section>
     );
 }
